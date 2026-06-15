@@ -1706,6 +1706,9 @@ public final class GenericsChecks {
                 formalReturnType,
                 false);
       }
+      if (returnExpressionType == null) {
+        return;
+      }
       boolean isReturnTypeValid =
           subtypeParameterNullability(formalReturnType, returnExpressionType, state);
       if (!isReturnTypeValid) {
@@ -2104,6 +2107,9 @@ public final class GenericsChecks {
                           pathToParam,
                           formalParameter,
                           false);
+                }
+                if (actualParameterType == null) {
+                  return;
                 }
                 if (!subtypeParameterNullability(formalParameter, actualParameterType, state)) {
                   reportInvalidParametersNullabilityError(
